@@ -30,5 +30,45 @@ const display = data =>{
       container.appendChild(div);
     });
 }
-const a = loadUrl('08');
-console.log(a);
+
+// home and all news btn works 
+// home 
+document.getElementById('home').addEventListener('click',function(){
+        const a = loadUrl('08');
+        console.log(a);
+    })
+document.getElementById('bnews').addEventListener('click',function(){
+        const a = loadUrl('01');
+        console.log(a);
+    })
+document.getElementById('rnews').addEventListener('click',function(){
+        const a = loadUrl('02');
+        console.log(a);
+    })
+document.getElementById('inews').addEventListener('click',function(){
+        const a = loadUrl('03');
+        console.log(a);
+    })
+document.getElementById('sports').addEventListener('click',function(){
+        const a = loadUrl('04');
+        console.log(a);
+    })
+document.getElementById('entertainment').addEventListener('click',function(){
+        const a = loadUrl('05');
+        console.log(a);
+    })
+document.getElementById('culture').addEventListener('click',function(){
+        const a = loadUrl('06');
+        console.log(a);
+    })
+document.getElementById('arts').addEventListener('click',function(){
+        const a = loadUrl('07');
+        console.log(a);
+    })
+document.getElementById('all').addEventListener('click',function(){
+        const a = loadUrl('08');
+        console.log(a);
+    })
+
+// const a = loadUrl('08');
+// console.log(a);
