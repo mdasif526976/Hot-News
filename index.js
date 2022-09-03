@@ -4,13 +4,14 @@ const loadUrl = (id) =>{
     fetch(url)
     .then(res => res.json())
     .then(data => display(data.data))
+    .catch(error => console.log(error))
 }
-const display = data =>{
- console.log(data.lenght);
-
-// find----------- item
-const lenght =data.lenght;
-const find = document.getElementById('result');
+const display = (data) =>{
+    let datal = data;
+    let len = datal.length;
+ console.log(data.length)
+const findElement = document.getElementById('find');
+findElement.innerText = len;
 // find.innerText=lenght;
 // console.log(lenght)
 // not found working
@@ -26,7 +27,6 @@ else{
   const container = document.getElementById('contaier'); 
    container.innerHTML = '';
     data.forEach(element => {
-        console.log(element.lenght)
         container.classList.add('card');
         const div = document.createElement('div');
         div.innerHTML =`
@@ -110,6 +110,7 @@ const modal = (id) =>{
     fetch(`https://openapi.programming-hero.com/api/news/${id}`)
     .then(res => res.json())
     .then(data => modalDetail(data.data[0]))
+    .catch(error => console.log(error))
 }
 const modalDetail = (data)=>{
  const title = document.getElementById('exampleModalLabel');
@@ -119,6 +120,10 @@ const modalbody =document.getElementById('modal') ;
 modalbody.innerHTML=`
 <img src="${data.thumbnail_url}" alt="">
 <p> ${data.details}</p>
+<div class="d-flex">
+<img class="rounded-circle" src="${data.author.img}" width="50px" alt="">
+<h6 class="pt-2 fs-6 text">${data.author.name ? data.author.name:'not found Authour Name'}</h6>
+</div>
 `
 }
 
