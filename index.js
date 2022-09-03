@@ -11,6 +11,7 @@ const display = data =>{
         console.log(element)
         const container = document.getElementById('contaier');
         container.classList.add('card');
+        // container.innerHTML = "";
         const div = document.createElement('div');
         div.innerHTML =`
         <div class="row g-4">
