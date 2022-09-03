@@ -6,7 +6,7 @@ const loadUrl = (id) =>{
     .then(data => display(data.data))
 }
 const display = data =>{
-    console.log(data.lenght);
+ console.log(data.lenght);
 
 // find----------- item
 const lenght =data.lenght;
@@ -26,13 +26,11 @@ else{
   const container = document.getElementById('contaier'); 
    container.innerHTML = '';
     data.forEach(element => {
-        // console.log(element)
-        // console.log(element)
+        console.log(element.lenght)
         container.classList.add('card');
-     
         const div = document.createElement('div');
         div.innerHTML =`
-        <div  class=" card m-5 mb-3 bg-light" style="max-width: 1500px;">
+        <div onclick="modal('${element._id}')" class=" card m-5 mb-3 bg-light" style="max-width: 1500px;">
         <div class="row g-4">
         <div class="col-md-3">
           <img src="${element.image_url}" class="img-fluid rounded-start" height="80%" alt="...">
@@ -41,14 +39,15 @@ else{
           <div class="card-body">
             <h5 class="card-title">${element.title}</h5>
             <p class="card-text">${element.details.slice(0,150)}...</p>
-          <div class="d-flex justify-content-around">
-            <div class="d-flex gap-2 pb-5">
+          <div class="d-flex justify-content-sm-around justify-content-md-around">
+            <div class="d-flex gap-2 pb-5 justify-content-around">
             <img class="rounded-circle" src="${element.author.img}" width="50px" alt="">
-            <h6 class="pt-3">${element.author.name ? element.author.name:'not found Authour Name'}</h6>
+            <h6 class="pt-2 fs-6 text">${element.author.name ? element.author.name:'not found Authour Name'}</h6>
             </div>
-            <div class ="d-flex gap-2 pt-3">
-            <p class="card-text"><small class="fw-bold"><i class="fa-solid fa-eye"></i> ${element.total_view}</small></p>
-            <p onclick="modal('${element._id}')" class="card-text"> <span class="fs-6 fw-bold">See More</span> <i class="fa-solid fa-arrow-right text-info"></i></p></div>          
+            <div class ="d-flex mt-2">
+            <p class="card-text "><small class="fw-bold"><i class="fa-solid fa-eye"></i> ${element.total_view}</small></p>
+            <button type="button" class="btn btn-sm " data-bs-toggle="modal" data-bs-target="#exampleModal" "> More <i class=" text-info fa-solid fa-arrow-right"></i></button>
+            </div>          
             </div>
           </div>
         </div>
@@ -109,10 +108,21 @@ document.getElementById('all').addEventListener('click',function(){
     })
 const modal = (id) =>{
     fetch(`https://openapi.programming-hero.com/api/news/${id}`)
-    .then(res => res.json() )
-    .then(data => console.log(data.data))
+    .then(res => res.json())
+    .then(data => modalDetail(data.data[0]))
+}
+const modalDetail = (data)=>{
+ const title = document.getElementById('exampleModalLabel');
+ title.innerText = data.title;
+ console.log(data)   
+const modalbody =document.getElementById('modal') ;
+modalbody.innerHTML=`
+<img src="${data.thumbnail_url}" alt="">
+<p> ${data.details}</p>
+`
 }
 
+// const displayModal = 
 
 //  Spener 
  const toggleSpinner = isLoading => {
@@ -124,4 +134,4 @@ const modal = (id) =>{
       spenar.classList.add('d-none')
     }
 }
-// loadUrl('01');
+loadUrl('01');
