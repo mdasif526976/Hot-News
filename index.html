@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <main>
+    <main class="bg-secondary">
 <header>
     <!-- Navbar editing start -->
     <section class="mx-4 mt-2">
@@ -45,15 +45,34 @@
     <div><button id="arts" class="btn btn-outline-info">Arts</button></div>
     <div><button id="all" class="btn btn-outline-info">All news</button></div>
 </div>
+
+<section>
+    <!-- spenner add  -->
+    <div class="d-flex justify-content-center">
+        <div id="spener" class="spinner-border text-info d-none" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+</section>
     <!-- buttoon section end  -->
 </section>
+<section class="text-center bg-light rounded py-2">
+    <div id="cont">
+    <h6>Find result : <span id="find">00</span></h6>
+    </div>
+</section>
 </header>
-<section class="me-5 ">
+<section id="contaier" class="bg-secondary">
     <!-- content add start  -->
-    <div id="contaier" class="card mb-3" style="max-width: 1200px;">
+    <div  class=" card m-5 mb-3" style="max-width: 1500px;">
         
       </div>
+
     <!-- content add end  -->
+</section>
+
+<section class="text-center text-warning">
+<h1 id="no-content" class="d-none"> Not Found Content!!</h1>
 </section>
     </main>
     <footer class="text-center footer">
