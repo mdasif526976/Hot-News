@@ -11,7 +11,7 @@ const display = data =>{
 // find----------- item
 const lenght =data.lenght;
 const find = document.getElementById('result');
-find.innerText=lenght;
+// find.innerText=lenght;
 // console.log(lenght)
 // not found working
 const notFound = document.getElementById('no-content');
@@ -27,7 +27,7 @@ else{
    container.innerHTML = '';
     data.forEach(element => {
         // console.log(element)
-        console.log(element.author)
+        // console.log(element)
         container.classList.add('card');
      
         const div = document.createElement('div');
@@ -44,11 +44,11 @@ else{
           <div class="d-flex justify-content-around">
             <div class="d-flex gap-2 pb-5">
             <img class="rounded-circle" src="${element.author.img}" width="50px" alt="">
-            <h6 class="pt-3">${element.author.name}</h6>
+            <h6 class="pt-3">${element.author.name ? element.author.name:'not found Authour Name'}</h6>
             </div>
             <div class ="d-flex gap-2 pt-3">
             <p class="card-text"><small class="fw-bold"><i class="fa-solid fa-eye"></i> ${element.total_view}</small></p>
-            <p class="card-text"> <span class="fs-6 fw-bold">See More</span> <i class="fa-solid fa-arrow-right text-info"></i></p></div>          
+            <p onclick="modal('${element._id}')" class="card-text"> <span class="fs-6 fw-bold">See More</span> <i class="fa-solid fa-arrow-right text-info"></i></p></div>          
             </div>
           </div>
         </div>
@@ -107,6 +107,13 @@ document.getElementById('all').addEventListener('click',function(){
         console.log(a);
         toggleSpinner(true);
     })
+const modal = (id) =>{
+    fetch(`https://openapi.programming-hero.com/api/news/${id}`)
+    .then(res => res.json() )
+    .then(data => console.log(data.data))
+}
+
+
 //  Spener 
  const toggleSpinner = isLoading => {
     const spenar = document.getElementById('spener');
